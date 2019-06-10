@@ -1,0 +1,144 @@
+html {
+    background: url('../img/moda.jpg') no-repeat;
+    background-size: 100%;
+    height: 180%;
+    
+}
+
+#tudo{   
+    background-size: 100%;
+    height: 160%;
+    width: 103%;
+    margin-left: -2%;
+    margin-top: -11%;
+}
+
+#logo{
+    height: 350px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 5%;
+}
+
+#fund{
+    margin-top: 8%;
+}
+
+h1 {
+    color: white;   
+    text-align: center;    
+}
+
+
+.form{  
+    border-radius: 10px; 
+    margin-bottom: 20px;
+    margin-top: 15%;
+    margin-left: 35%;
+    margin-right: 35%;
+    height: 550px;
+    width: 20%;
+    padding: 40px;
+    padding-top: 15px;
+    text-align: center;
+    /*rgba é vermelho*/
+    background-color: rgba(219, 56, 56, 0.66);  
+}
+
+#tex{
+    margin-top: 10px;
+    width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid white; 
+    font-weight: bold;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form input{
+    outline: none;
+    border-radius: 5%;
+    width: 80%;
+ 
+    color: gray;
+    padding: 5px;
+    font-size: 18px;
+    float: left;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.form1{
+    border-radius: 10px; 
+    margin-bottom: 20px;
+    margin-top: 10%;
+    margin-left: 35%;
+    margin-right: 35%;
+    height: 250px;
+    width: 20%;
+    padding: 40px;
+    padding-top: 15px;
+    text-align: center;
+    /*rgba é vermelho*/
+    background-color: rgba(219, 56, 56, 0.66); 
+}
+
+#lo{
+margin: 1px solid black;
+margin-top: 17px;
+padding: 0px;
+font-weight: bold;
+color: white;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.baby {
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid white;
+}
+
+
+
+.baby input{
+    outline: none;
+    border: none;
+    width: 80%;
+    background: none;  
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    float: left;
+    margin: 0 10px;
+    text-align: center;
+}
+
+
+
+.entrar {
+    background-color:rgb(240, 129, 125);
+    border-radius: 2px;
+    border: 2px solid rgb(189, 142, 250);
+    padding: 10px;
+    color: wheat;
+    font-size: 14px;
+    
+}
+
+
+.esqueci, .cadastro{
+    margin-bottom: 10px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
