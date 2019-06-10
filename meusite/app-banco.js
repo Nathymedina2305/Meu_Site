@@ -3,7 +3,7 @@ var desenvolvimento = false;
 var configuracoes = {
     producao: {
         server: "servidor01191104.database.windows.net",
-        user: "NATALIA.JULIANP@bandtec.com.br",
+        user: "aluno01191104",
         password: "#Gf49133597898",
         database: "CasiAngeles",
         options: {
@@ -18,7 +18,7 @@ var configuracoes = {
     },
     desenvolvimento: {
         server: "servidor01191104.database.windows.net",
-        user: "NATALIA.JULIANP@bandtec.com.br",
+        user: "aluno01191104",
         password: "#Gf49133597898",
         database: "CasiAngeles",
         options: {
