@@ -1,99 +1,194 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="estilos/estilo2.0.css">
-   <title>Login- teste</title>
+    <title>Login- teste</title>
 </head>
 
 <body class="fundo">
-        <img src="http://temperosmasterchefbrasil.com.br/assets/images/chefs/MASTERCHEF-01-01.png" id="logo">
+    <img src="http://temperosmasterchefbrasil.com.br/assets/images/chefs/MASTERCHEF-01-01.png" id="logo">
 
-        <div style= "background-color:red; height: 102px; width: 105%; margin-left: -4%;" id="fund"></div>
-                    <div id="tudo"> 
-                    <div class="form">                              
-                            
-                            
-                            <div id="tex">
-                            <h1>Cadastrar</h1>
-                            <br><br>
+    <div style="background-color:red; height: 102px; width: 105%; margin-left: -4%;" id="fund"></div>
+    <div id="tudo">
+        <form id="formcad" method="POST" onsubmit="return cadastrar()">
+            <div class="form">
+                <div id="tex">
+                    <h1>Cadastrar</h1>
+                    <br><br>
 
-                            <p>Nome</p>
-                            <input type="text" nome="login" placeholder="Nome" required>
-                            <br><br>
-            
-                            <p>apelido</p>
-                            <input type="text" nome="senha" placeholder="apelido" required>
-                            <br><br>
+                    <p>Nome</p>
+                    <input type="text" name="nome" placeholder="Nome" required>
+                    <br><br>
 
-                            <p>Email</p>
-                            <input type="email" nome="senha" placeholder="Email" required>
-                            <br><br>
+                    <p>apelido</p>
+                    <input type="text" name="apelido" placeholder="apelido" required>
+                    <br><br>
 
-                            <p>Senha</p>
-                            <input type="password" nome="senha" placeholder="Senha" required>
-                            <br><br>
+                    <p>Email</p>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <br><br>
 
-                            <p>Confirmar Senha</p>
-                            <input type="password" nome="confirma" placeholder="Confirma Senha" required>
-                            <br><br><br>
-                            
-                            <button type="" class="entrar" onclick="sumir(tudo)">Confirmar</button>
-        
-                        </div>
-                        </div>
+                    <p>Senha</p>
+                    <input type="password" name="senha" id="senha" placeholder="Senha" required>
+                    <br><br>
+
+                    <p>Confirmar Senha</p>
+                    <input type="password" name="confirma" id="confirma" placeholder="Confirma Senha" required>
+                    <br><br><br>
+
+                    <button type="submit" id="btn_entrar" class="entrar">Confirmar</button>
+
+                    <br><br>
+                    <a onclick="sumir(tudo)">Já tenho Cadastro</a>
+
                 </div>
-
-
-
-           
-            <div id="lo" style="display: none">  
-                <div class="form1">
-                <h1>Login</h1>
-             
-                <div class="baby">
-                    <input type="text" name="login" placeholder="Login" required>
-                </div>
-               
-                <div class="baby">
-                    <input type="password" name="senha" placeholder="Senha" required>
-                </div>       
-                
-                <br><br>
-                
-                <div class="botao">
-                        <button class="entrar" onclick="validar()">Login</button>
-                </div>         
             </div>
-        </div>
+        </form>
+    </div>
 
+<form id="lo" method="POST" onsubmit="return entrar()" style="display: none">
+        <div class="form1">
+            <h1>Login</h1>
+
+            <div class="baby">
+                <input type="text" name="login" placeholder="Login" required>
+            </div>
+
+            <div class="baby">
+                <input type="password" name="senha" placeholder="Senha" required>
+            </div>
+
+            <br><br>
+
+            <div class="botao">
+                <button class="entrar" id="btn_entrar1">Login</button>
+            </div>
+
+            <br>
+            <a onclick="cad()">Quero me Cadastrar</a>
+        </div>
+</form>
+
+
+    <div id="cadis" style="display: none">
+        <div class="form1">
+            <h1>Seja Bem Vindo! </h1>
+
+            <div class="botao">
+                <button type= "button" class="entrar" onclick="logoff()">Sair</button>
+            </div>
+
+        </div>
+    </div>
 </body>
+
 </html>
 <script>
-function sumir(comp){
-    tudo.style.display = 'none';
-    lo.style.display = 'inline';
-}
-function validar() {
-    var l= login.value;
-    var p= senha.value;
-        if (l=="mar" && p=="mar") {
-            
-           alert(`Bem vinda!!!`)
-        }
-              
-        else if(l=='thiago' && p=='thiago'){
-           alert(`Bem Vindo!!`);
-          
-        }
 
-       
-        else{
-            alert(`Acesso negado!`)
+    function sumir(comp) {
+        tudo.style.display = 'none';
+        lo.style.display = 'inline';
+        
     }
 
-}
+
+    function cad() {
+        tudo.style.display = 'inline';
+        lo.style.display = 'none';
+    }
+
+    function bye() {
+        tudo.style.display = 'none';
+        lo.style.display = 'none';
+        cadis.style.display = 'inline';
+    }
 </script>
+<!-- script yoshiro para cadastro -->
+<script>
+    function cadastrar() {
+        if (confirma.value == senha.value) {
+
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(formcad));
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+
+                if (response.ok) {
+                    sumir(tudo);
+                } else {
+                    console.log('Erro de cadastro!');
+                    response.text().then(function (resposta) {
+                        alert(`Erro de Cadastro`);
+                    });
+                    finalizar_aguardar();
+                }
+            });
+            
+        }
+        else {
+            alert(`Senhas não são iguais!`);
+        }
+        return false;
+    }
+    function aguardar() {
+        btn_entrar.disabled = true;
+    }
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+    }
+</script>
+
+<!--script de login para bem vindo  -->
+<script>
+///yjyuuujuyj
+        verificarAutenticacao();
+
+        function verificarAutenticacao() {
+            if (sessionStorage.usuario_bandtec != undefined) {
+                bye();
+            }
+
+            else {
+                sumir();
+            }
+        }
+
+        function entrar() {
+            aguardar1();
+            var formulario = new URLSearchParams(new FormData(lo));
+            fetch("/usuarios/entrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+                
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        sessionStorage.usuario_bandtec = resposta.nome;
+                        verificarAutenticacao();
+                    });
+                } else {
+                    console.log('Erro de login!');
+                    finalizar_aguardar1();
+                }
+            });
+            return false;
+        }
+        function aguardar1() {
+            btn_entrar1.disabled = true;
+        }
+        function finalizar_aguardar1() {
+            btn_entrar1.disabled = false;
+        }
+
+        function logoff() {
+        sessionStorage.removeItem('usuario_bandtec');
+        verificarAutenticacao();
+    }
+
+    </script>
